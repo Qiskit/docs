@@ -6,22 +6,7 @@ description: How to run quantum computing jobs in batch mode using Qiskit Runtim
 
 # Run jobs in a batch
 
-
-<Admonition type="caution" title="Important">
-The way batches are started within Qiskit Runtime has changed. **By 1 April 2024**, upgrade to `qiskit-ibm-runtime` version 0.20.0 or later. In addition, ensure you are using Qiskit version 0.45.0 or later. Starting 1 April, batch calls made in earlier versions of these packages will fail.
-</Admonition>
-
-Batch mode can shorten processing time if all jobs can be provided at the outset. If you want to submit iterative jobs, use [sessions](sessions) instead.  Using batch mode has these benefits:
-
--  The jobs' classical computation, such as compilation, is run in parallel. Thus, running multiple jobs in a batch is significantly faster than running them serially.
--  There is usually minimal delay between jobs, which can help avoid drift.
--  If you partition your workload into multiple jobs and run them in batch mode, you can get results from individual jobs, which makes them more flexible to work with.  For example, if a job's results don't meet your expectations, you can cancel the remaining jobs. Also, if one job fails, you can re-submit it instead of re-running the entire workload.
-
-<Admonition type="note">
-    When batching, jobs are not guaranteed to run in the order they are submitted. Also, while your batch jobs will run as closely together as possible, they don't get exclusive access to the backend. Therefore, your batch jobs might run in parallel with other users' jobs if there is enough processing capacity on the QPU. Additionally, QPU calibration jobs could run between the batched jobs.
-</Admonition>
-
-![This diagram illustrates jobs submitted in a batch.  It shows five jobs, numbered 0 through 4, in a queue. The jobs are a mix of Estimator and Sampler.](/images/guides/batch.avif 'Figure 1: Batch execution')
+Use batch mode to submit multiple primitive jobs simultaneously. Following are examples of working with batches.
 
 ## Open a batch
 
@@ -153,7 +138,7 @@ with Batch(backend=backend) as batch:
 
 
 <Admonition type="tip" title="Recommendations">
-  - Try an example in the [Quantum approximate optimization algorithm (QAOA)](https://learning.quantum.ibm.com/tutorial/quantum-approximate-optimization-algorithm) tutorial.
+  - Try an example in the [Combine error mitigation options with the estimator primitive](https://learning.quantum.ibm.com/tutorial/combine-error-mitigation-options-with-the-estimator-primitive) tutorial.
   - Review the [Batch API](/api/qiskit-ibm-runtime/qiskit_ibm_runtime.Batch) reference.
   - Understand the [Job limits](/guides/job-limits) when sending a job to an IBM&reg; QPU.
 </Admonition>

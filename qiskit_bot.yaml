@@ -207,9 +207,6 @@ notifications:
     - "@beckykd"
     - "@abbycross"
     - "`@blakejohnson`"
-  "docs/guides/sessions":
-    - "@jyu00"
-    - "@beckykd"
   "docs/guides/set-optimization":
     - "`@nbronn`"
     - "@beckykd"
